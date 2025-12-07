@@ -29,9 +29,10 @@ The Following permutations of Flags are valid in messages:
 - ACK: Acknowledgement of received message - ensure that all ACK messages have the acknowledgement number set to the sequence number of the message being acknowledged. Otherwise ACK number is 0.
 - NAK: No Acknowledgement, requests server to resend last message
 - FIN: Termination of connection
-- GET: Request to read a specific Readable register (Denoted QX0, SX0, Flag, etc.)
+- GET: Request to read a specific Readable register (Denoted SX0, QX0, IX0, IX1, IX2, **Flag**, etc. - case sensitive)
 - GET + FIN: Bad GET request, tried to read not readable register
 - DAT: Data message containing requested data, wait for confirmation before proceeding
+- DAT + ACK: Acknowledge partial Data message, NOT required in response to DAT + FIN.
 - DAT + FIN: Data message containing requested data, FIN denotes no more data messages to follow
 - SET: Request to write to a specific Writeable register (Denoted IX0, IX1, etc.), followed by a space and a byte to represent the new state of the register
 - SET + FIN: Bad SET request, tried to write to not writeable register
@@ -54,3 +55,4 @@ C: 135354415244555354170a0286fa062e062d400a0000000000000000000000000000000000000
 C: 135354415244555354170a0286fa062f0000100a5158300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 S: 135354415244555354170a0286fa0630062f060a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
